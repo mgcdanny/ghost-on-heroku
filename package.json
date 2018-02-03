@@ -1,6 +1,6 @@
 {
-  "name": "ghost-on-heroku",
-  "description": "Just a blogging platform on Heroku.",
+  "name": "heroku-cra-ghost",
+  "description": "Create React App plus a blogging platform on Heroku.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -13,12 +13,18 @@
     "casper": "github:tryghost/Casper#2.1.0",
     "ghost": "^1.8.0",
     "ghost-storage-adapter-s3": "^2.3.0",
-    "mysql": "^2.14.1"
+    "mysql": "^2.14.1",
+    "express": "^4.14.1"
   },
   "engines": {
     "node": "6.11.x"
   },
   "scripts": {
-    "start": "node server.js"
-  }
+    "start": "node server.js",
+    "heroku-postbuild": "cd react-ui/ && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "cacheDirectories": [
+    "node_modules",
+    "react-ui/node_modules"
+  ]
 }
